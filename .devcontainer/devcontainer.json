@@ -1,0 +1,85 @@
+{
+  "name": "Giveaways-God",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "runArgs": [
+    "--env-file",
+    "${localWorkspaceFolder}/.devcontainer/.env"
+  ],
+  "appPort": [8080],
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+    "terminal.integrated.profiles.linux": {
+      "bash": {
+        "path": "/bin/bash"
+      }
+    },
+    "python.defaultInterpreterPath": "/usr/local/bin/python",
+    "python.languageServer": "Default",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+    "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+    "python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+    "python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
+    "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+    "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+    "python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
+    "python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
+    "python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
+    },
+
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "gitHub.copilot",
+      "ms-toolsai.jupyter-keymap",
+      "njpwerner.autodocstrin",
+      "ms-azuretools.vscode-docker",
+      "github.copilot-labs",
+      "ms-toolsai.jupyter",
+      "ms-toolsai.vscode-jupyter-cell-tags",
+      "ms-toolsai.jupyter-renderers",
+      "ms-toolsai.vscode-jupyter-slideshow",
+      "ipedrazas.kubernetes-snippets",
+      "christian-kohler.path-intellisense",
+      "ms-python.vscode-pylance",
+      "visualstudioexptteam.intellicode-api-usage-examples",
+      "visualstudioexptteam.v",
+      "github.heygithub",
+      "wholroyd.jinja",
+      "ms-python.python",
+      "mechatroner.rainbow-csv",
+      "redhat.vscode-yaml",
+      "kevinrose.vsc-python-indent",
+      "shyykoserhiy.vscode-spotify",
+      "donjayamanne.python-extension-pack",
+      "donjayamanne.python-environment-manager",
+      "ms-kubernetes-tools.vscode-kubernetes-tools",
+      "esbenp.prettier-vscode",
+      "ms-toolsai.jupyter-keymap",
+      "ms-python.pylint"
+    ]
+    }
+  },
+
+  "postCreateCommand": "poetry install",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind",
+  "workspaceFolder": "/app",
+  "containerUser": "root",
+  "remoteUser": "root",
+  "remoteEnv": {},
+  "forwardPorts": [8080],
+  "overrideCommand": true,
+  "containerEnv": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  }
+}
